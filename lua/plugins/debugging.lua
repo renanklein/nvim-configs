@@ -1,13 +1,18 @@
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
-    "rcarriga/nvim-dap-ui"
+    "rcarriga/nvim-dap-ui",
+    "leoluz/nvim-dap-go"
   },
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")
     vim.keymap.set('n', "<leader>dt", dap.toggle_breakpoint, {})
     vim.keymap.set('n', "<leader>dc", dap.continue, {})
+
+  -- go debugger configs
+
+    require("dap-go").setup()
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
