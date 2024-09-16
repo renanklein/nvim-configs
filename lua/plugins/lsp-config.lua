@@ -5,11 +5,6 @@ return {
 			require("mason").setup()
 		end,
 	},
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
@@ -45,7 +40,7 @@ return {
 			})
 
       lspconfig.rust_analyzer.setup({
-        capabilities = capabilities
+          capabilities = capabilities
       })
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
