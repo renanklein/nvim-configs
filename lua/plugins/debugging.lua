@@ -10,7 +10,26 @@ return {
     vim.keymap.set('n', "<leader>dt", dap.toggle_breakpoint, {})
     vim.keymap.set('n', "<leader>dc", dap.continue, {})
 
-  -- go debugger configs
+
+    -- c# degugger configs
+    dap.adapters.coreclr = {
+      type = 'executable',
+      command = '~/.local/share/nvim/mason/bin',
+      args = {'--interpreter=vscode'}
+    }
+
+    dap.configurations.cs = {
+      {
+        type = "coreclr",
+        name = "launch - netcoredbg",
+        request = "launch",
+        program = function()
+          return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        end,
+      },
+    }
+
+    -- go debugger configs
 
     require("dap-go").setup()
 
