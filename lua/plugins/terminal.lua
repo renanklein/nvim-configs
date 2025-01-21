@@ -3,6 +3,6 @@ return {
 	version = "*",
 	config = function()
 		require("toggleterm").setup({})
-		vim.keymap.set("n", "<A-3>", ":ToggleTerm direction=float<CR>", {})
+		vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=float<CR>", {})
 	end,
 }
