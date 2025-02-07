@@ -9,34 +9,21 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_install = { "lua_ls", "gopls", "csharp_ls" },
+        ensure_install = { "lua_ls", "gopls", "csharp_ls", "jdtls" },
       })
+
     end,
   },
   {
-    'nvim-java/nvim-java',
-    config = false,
-    dependencies = {
-      {
-        'neovim/nvim-lspconfig',
-        'nvim-neotest/nvim-nio',
-        'nvim-java/nvim-java-core',
-        opts = {
-          servers = {
-            jdtls = {
-              -- Your custom jdtls settings goes here
-            },
-          },
-          setup = {
-            jdtls = function()
-              require('java').setup({
-                -- Your custom nvim-java configuration goes here
-              })
-            end,
-          },
-        },
-      },
-    },
+    'WhoIsSethDaniel/mason-tool-installer.nvim'
+    config = function ()
+      require('mason-tool-installer').setup({
+        ensure_install = {
+          'java-test',
+          'java-debug-adapter'
+        }
+      })
+    end
   },
   {
     "neovim/nvim-lspconfig",
